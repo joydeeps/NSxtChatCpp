@@ -211,24 +211,18 @@ typedef std::list<chat_server_ptr> chat_server_list;
 
 int _tmain(int argc, _TCHAR* argv[])
 {
+	const std::string server_Port("9191");
+
 	try
 	{
-		if (argc < 2)
-		{
-			std::cerr << "Usage: chat_server <port> [<port> ...]\n";
-			return 1;
-		}
-
 		boost::asio::io_service io_service;
 
 		chat_server_list servers;
-		for (int i = 1; i < argc; ++i)
-		{
-			using namespace std; // For atoi.
-			tcp::endpoint endpoint(tcp::v4(), atoi(argv[i]));
-			chat_server_ptr server(new chat_server(io_service, endpoint));
-			servers.push_back(server);
-		}
+
+		using namespace std; // For atoi.
+		tcp::endpoint endpoint(tcp::v4(), atoi(server_Port.c_str()));
+		chat_server_ptr server(new chat_server(io_service, endpoint));
+		servers.push_back(server);
 
 		io_service.run();
 	}

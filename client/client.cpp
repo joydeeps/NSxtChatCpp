@@ -136,16 +136,10 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	try
 	{
-		if (argc != 3)
-		{
-			std::cerr << "Usage: chat_client <host> <port>\n";
-			return 1;
-		}
-
 		boost::asio::io_service io_service;
 
 		tcp::resolver resolver(io_service);
-		tcp::resolver::query query(argv[1], argv[2]);		
+		tcp::resolver::query query(server_IP, server_Port);
 		tcp::resolver::iterator iterator = resolver.resolve(query);
 
 		chat_client c(io_service, iterator);

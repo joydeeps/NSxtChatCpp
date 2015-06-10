@@ -67,7 +67,7 @@ public:
   {
     using namespace std; // For strncat and atoi.
     char header[header_length + 1] = "";
-    strncat(header, data_, header_length);
+    strncat_s(header, data_, header_length);
     body_length_ = atoi(header);
     if (body_length_ > max_body_length)
     {
@@ -81,7 +81,7 @@ public:
   {
     using namespace std; // For sprintf and memcpy.
     char header[header_length + 1] = "";
-    sprintf(header, "%4d", static_cast<int>(body_length_));
+    sprintf_s(header, "%4d", static_cast<int>(body_length_));
     memcpy(data_, header, header_length);
   }
 
