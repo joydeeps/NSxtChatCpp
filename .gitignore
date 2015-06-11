@@ -226,3 +226,6 @@ FakesAssemblies/
 *.exe
 *.out
 *.app
+lib/boost_1_58_0/bin.v2/project-cache.jam
+lib/boost_1_58_0/bin.v2/standalone/ac/main.cpp
+lib/boost_1_58_0/bin.v2/standalone/ac/zlib.h.cpp
